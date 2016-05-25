@@ -1,0 +1,18 @@
+{
+
+  "Onfido" : {
+    "config" :{
+      "apiKey"             : "test_-WIZRzaUe1pArajKnSxDoeVMfUJTjqhE"
+    }
+  },
+  "LexisNexis" : {
+    "config" : {
+      "url"         : "https://netview.verid.com:443/carbon/ws",
+      "wsdlPath"    : "?WSDL",
+      "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
+      "mode"        : "testing",
+      "ruleSet"     :"public.testing.redherrings",
+      "constructTestResponse" : "Yes"
+    }
+  }
+}

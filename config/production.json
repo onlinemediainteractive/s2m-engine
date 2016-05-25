@@ -1,0 +1,10 @@
+{
+  "Onfido" : {
+    "config" :{
+      "apiKey"             : " ",
+      "transport"          : "https://",
+      "host"               : "api.onfido.com",
+      "creatApplicantPath" : "/v2/applicants"
+    }
+  }
+}
