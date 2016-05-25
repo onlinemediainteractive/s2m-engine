@@ -1,0 +1,31 @@
+{
+  "Onfido" : {
+    "config" :{
+      "apiKey"             : " ",
+      "transport"          : "https://",
+      "host"               : "api.onfido.com",
+      "path"               : "/v2/applicants",
+      "checks"             : "/checks"
+    }
+  },
+  "LexisNexis" : {
+    "config" : {
+      "url" : "https://netview.verid.com:443/carbon/ws",
+      "wsdlPath" : "?WSDL",
+      "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification"
+    }
+  },
+  "responseStatusCodes" : {
+    "config" : [
+      {"errorCode" : "SUCCESS"                        , "statusCode" : "201", "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Success"},
+      {"errorCode" : "SUCCESS_CREATE"                 , "statusCode" : "201", "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Success"},
+      {"errorCode" : "ERROR"                          , "statusCode" : "201", "message" : "Error",                                     "httpResponseCode" : "201", "status" : "Success"},
+      {"errorCode" : "FAILURE"                        , "statusCode" : "201", "message" : "Failure",                                   "httpResponseCode" : "201", "status" : "Failure"},
+      {"errorCode" : "FAILED_BASIC_AUTH_NO_USER_FOUND", "statusCode" : "401", "message" : "Invalid API Credentials",                   "httpResponseCode" : "401", "status" : "Error"},
+      {"errorCode" : "REQUEST_FAILED_VALIDATION"      , "statusCode" : "422", "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Error"},
+      {"errorCode" : "INTERNAL_ERR"                   , "statusCode" : "500", "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Error"},
+      {"errorCode" : "REMOTE_ERR"                     , "statusCode" : "500", "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Error"},
+      {"errorCode" : "SUCCESS_APPLICANT_EXIST"        , "statusCode" : "200", "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Success"}
+    ]
+  }
+}
