@@ -25,7 +25,8 @@
       {"errorCode" : "REQUEST_FAILED_VALIDATION"      , "statusCode" : "422", "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Error"},
       {"errorCode" : "INTERNAL_ERR"                   , "statusCode" : "500", "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Error"},
       {"errorCode" : "REMOTE_ERR"                     , "statusCode" : "500", "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Error"},
-      {"errorCode" : "SUCCESS_APPLICANT_EXIST"        , "statusCode" : "200", "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Success"}
+      {"errorCode" : "SUCCESS_APPLICANT_EXIST"        , "statusCode" : "200", "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Success"},
+      {"errorCode" : "SUCCESS_PING"                   , "statusCode" : "200", "message" : "Sucessful Ping",                            "httpResponseCode" : "200", "status" : "Success"}
     ]
   }
 }

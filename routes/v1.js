@@ -10,6 +10,7 @@ var router = express.Router();
 var applicant = require('../services/model/onfido/applicant');
 var application = require('../services/model/s2m/application');
 var identityQuiz = require('../services/model/lexisNexis/identityQuiz');
+var S2mResponse = require("../lib/common/s2mResponse");
 
 
 router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
@@ -78,6 +79,13 @@ router.get('/verify/list',  function(req, res, next) {
         res.status(200).send(resultfind);
     });
 
+});
+
+router.get('/verify/ping',  function(req, res, next) {
+
+    var s2mResponse = new S2mResponse();
+    s2mResponse.setHttpResponse('SUCCESS_PING');
+    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
 });
 
 module.exports = router;
