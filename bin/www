@@ -8,12 +8,13 @@ var app = require('../app');
 var debug = require('debug')('s2m-eng:server');
 var http = require('http');
 var db = require('..//lib/data_store/mysql');
+var argv = require('minimist')(process.argv.slice(2));
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || argv.port || '3000');
 app.set('port', port);
 
 /**
@@ -42,11 +43,6 @@ app.on('stormpath.ready', function () {
   })
   ;
 
- // db.ping().then(function(r) {
- //   console.log("Data Store Start Up Complete");
- // }).catch( function(err) {
- //   console.log("Data Store Start Up Failed :" + err);
- // });
 
 });
 

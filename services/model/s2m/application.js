@@ -5,6 +5,7 @@ var S2mResponse = Promise.promisifyAll(require("../../../lib/common/s2mResponse"
 
 
 
+
 validateApplication = function(appInfo) {
 
     var errors = [];
@@ -12,8 +13,11 @@ validateApplication = function(appInfo) {
     return errors;
 }
 
+var Application = function() {
 
-exports.verifyApplicationLogin = function(user_name, password) {
+}
+
+Application.prototype.verifyApplicationLogin = function(user_name, password) {
     var query = 'select id, payload from application_json where api_key = ? and api_secret = ?';
     var params = [user_name, password];
     return db.query(query,params).then(function(applicationInformation) {
@@ -37,4 +41,4 @@ exports.verifyApplicationLogin = function(user_name, password) {
     });
 };
 
-
+module.exports.Application = new Application();

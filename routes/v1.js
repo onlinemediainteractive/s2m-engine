@@ -1,6 +1,4 @@
-/**
- * Created by dfennell on 5/3/16.
- */
+var Promise = require('bluebird');
 var express = require('express');
 var stormpath = require('express-stormpath');
 var _ = require('lodash');
@@ -8,10 +6,18 @@ var request = require('request-promise');
 var basicAuth = require('basic-auth');
 var router = express.Router();
 var applicant = require('../services/model/onfido/applicant');
-var application = require('../services/model/s2m/application');
-var identityQuiz = require('../services/model/lexisNexis/identityQuiz');
+
+//var Applicant = Promise.promisifyAll(require('../services/model/onfido/applicant'));
+
+var application = require('../services/model/s2m/application').Application;
+var identityQuiz = require('../services/model/lexisnexis/identityQuiz');
 var S2mResponse = require("../lib/common/s2mResponse");
 
+var VerifyIdentity = require("../services/controllers/verifyIdentity");
+
+Promise.promisifyAll(VerifyIdentity.prototype);
+
+var using = Promise.using;
 
 router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
 
@@ -30,6 +36,35 @@ router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
 
 });
 
+
+router.post('/verify/identity',  function(req, res, next) {
+
+    //applicant.processFlow2Async(req.body, req.applicationInfo).then(function(s2mresponse) {
+    //    console.log(s2mresponse);
+    //    res.send('xxxxxxx');
+    //});
+    
+    var id = new VerifyIdentity(req.applicationInfo, req.body);
+    id.processAsync().then(function(response){
+        console.log('Response Body :' + JSON.stringify(response.getHttpResponse()));
+        if(!_.isNil(response.getObject('testResponse'))) {
+            console.log('Test Response : ' + JSON.stringify(response.getObject('testResponse')));
+        }
+
+        res.status(response.getHttpStatusCode()).send(response.getHttpResponse());
+    });
+    //console.log('before rend');
+    //res.send('new process');
+    //res.status(response.getHttpStatusCode()).send(response.getHttpResponse());
+
+       // .this(function(s2mresponse) {
+       // res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+
+        //return;
+    //});
+
+});
+
 router.post('/verify/ssn',  function(req, res, next) {
 
     var validationResponse = applicant.validateRequestParams(req.body);
@@ -45,7 +80,7 @@ router.post('/verify/ssn',  function(req, res, next) {
     };
 });
 
-router.post('/verify/identity',  function(req, res, next) {
+router.post('/verify/identityx',  function(req, res, next) {
 
     identityQuiz.beginQuiz(req.body).then(function(identityResponse){
         console.log('Transaction Id: ' + JSON.stringify(identityResponse.transactionId));

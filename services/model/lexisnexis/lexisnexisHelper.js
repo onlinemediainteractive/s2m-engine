@@ -80,9 +80,9 @@ exports.parseVerificationBody = function(args) {
     var activityDate = now.toISOString();
 
     var soapBody = new String(identityVerification);
-    soapBody     = soapBody.replace('$accountName$', args.accountName);
-    soapBody     = soapBody.replace('$mode$', args.mode);
-    soapBody     = soapBody.replace('$ruleSet$', args.ruleSet);
+    soapBody     = soapBody.replace('$accountName$', lexisNexisConfig.accountName);
+    soapBody     = soapBody.replace('$mode$', lexisNexisConfig.mode);
+    soapBody     = soapBody.replace('$ruleSet$', lexisNexisConfig.ruleSet);
     soapBody     = soapBody.replace('$nameFirst$', args.firstName);
     soapBody     = soapBody.replace('$nameLast$', args.lastName);
     soapBody     = soapBody.replace('$ssn$', args.ssn);
@@ -155,12 +155,80 @@ exports.response2json = function(xmlResponse, cb) {
 
             return cb( error, null);
         }
-       return  cb(null,jsonResponse);
+        else {
+          if (jsonResponse.transaction_response.transaction_status[0].transaction_result[0] == 'questions') {
+
+
+            var questions = jsonResponse.transaction_response.questions[0].question;
+            var identityTransaction = {};
+
+
+            identityTransaction.transactionId = jsonResponse.transaction_response.transaction_status[0].transaction_id[0];
+            identityTransaction.questionSetId = jsonResponse.transaction_response.questions[0].question_set_id[0];
+            identityTransaction.create_dt = new Date();
+            identityTransaction.message = jsonResponse.transaction_response.information[0].simple_detail[0].text[0];
+            identityTransaction.questions = [];
+
+            var question = {};
+            var choice = {};
+            _.forIn(questions, function (value, key) {
+                question = {}
+                //console.log(key + ' - ' + JSON.stringify(value));
+                question.questionId = value.question_id[0];
+                question.text = value.text[0].statement[0];
+                question.choice = []
+                _.forIn(value.choice, function (value, key) {
+                    choice = {};
+                    //console.log(key + ' - ' + JSON.stringify(value));
+                    choice.choiceId = value.choice_id[0];
+                    choice.text = value.text[0].statement[0];
+                    question.choice.push(choice);
+                });
+                identityTransaction.questions.push(question);
+            });
+            //identityTransaction.status = 'Success';
+            //identityTransaction.status_code = 200;
+            if (lexisNexisConfig.constructTestResponse == 'Yes') {
+                var testResponse = {};
+                testResponse.applicantRefId = '1';
+                testResponse.transactionId = identityTransaction.transactionId
+                testResponse.questionSetId = identityTransaction.questionSetId;
+                testResponse.answers = [];
+                var answer = {};
+                var choiceLength = 0
+                _.forIn(identityTransaction.questions, function (value, key) {
+                    answer = {};
+                    answer.questionId = value.questionId;
+                    choiceLength = value.choice.length;
+                    answer.choiceId = value.choice[choiceLength - 1].choiceId;
+                    testResponse.answers.push(answer);
+                    //console.log(key + ' - ' + JSON.stringify(value));
+                    //console.log('choiceLength ' + choiceLength);
+                });
+                identityTransaction.testResponse = testResponse;
+                identityTransaction.verificationStatus = {"status": "Continue",
+                                                          "reason" : identityTransaction.message};
+            }
+            return cb(null, identityTransaction);
+          }
+          else
+          {
+              var identityTransaction = {};
+              identityTransaction.transactionId = jsonResponse.transaction_response.transaction_status[0].transaction_id[0];
+              identityTransaction.message       = jsonResponse.transaction_response.information[0].simple_detail[0].text[0];
+
+              identityTransaction.verificationStatus = {"status": "Passed",
+                  "reason" : identityTransaction.message};
+              return cb(null, identityTransaction);
+          };
+
+        }
+
     });
 };
 
 
-exports.response2json = function(xmlResponse, cb) {
+/*exports.response2json = function(xmlResponse, cb) {
     var responseBody = xmlResponse;
     var pos = responseBody.indexOf('<transaction-status>');
     responseBody = '<transaction-response>' + responseBody.substr(pos);
@@ -186,5 +254,5 @@ exports.response2json = function(xmlResponse, cb) {
         }
         return  cb(null,jsonResponse);
     });
-};
+};*/
 

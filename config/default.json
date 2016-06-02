@@ -17,16 +17,27 @@
   },
   "responseStatusCodes" : {
     "config" : [
-      {"errorCode" : "SUCCESS"                        , "statusCode" : "201", "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Success"},
-      {"errorCode" : "SUCCESS_CREATE"                 , "statusCode" : "201", "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Success"},
-      {"errorCode" : "ERROR"                          , "statusCode" : "201", "message" : "Error",                                     "httpResponseCode" : "201", "status" : "Success"},
-      {"errorCode" : "FAILURE"                        , "statusCode" : "201", "message" : "Failure",                                   "httpResponseCode" : "201", "status" : "Failure"},
-      {"errorCode" : "FAILED_BASIC_AUTH_NO_USER_FOUND", "statusCode" : "401", "message" : "Invalid API Credentials",                   "httpResponseCode" : "401", "status" : "Error"},
-      {"errorCode" : "REQUEST_FAILED_VALIDATION"      , "statusCode" : "422", "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Error"},
-      {"errorCode" : "INTERNAL_ERR"                   , "statusCode" : "500", "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Error"},
-      {"errorCode" : "REMOTE_ERR"                     , "statusCode" : "500", "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Error"},
-      {"errorCode" : "SUCCESS_APPLICANT_EXIST"        , "statusCode" : "200", "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Success"},
-      {"errorCode" : "SUCCESS_PING"                   , "statusCode" : "200", "message" : "Sucessful Ping",                            "httpResponseCode" : "200", "status" : "Success"}
+      {"responseCode" : "SUCCESS"                        , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_CREATE"                 , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Complete"},
+      {"responseCode" : "FAILURE_SSN_TRACE"              , "type" : "Message"  , "message" : "Unable to Verify Identity",                 "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "Error Code[SST-200]"},
+      {"responseCode" : "FAILURE_QUIZ"                   , "type" : "Message"  , "message" : "Error Failed to Pass Identity Quiz",        "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "Error Code[QUIZ-200]"},
+      {"responseCode" : "SUCCESS_QUIZ"                   , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "ERROR"                          , "type" : "Message"  , "message" : "Error",                                     "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_SCORE"                  , "type" : "Score"    , "message" : "Safe2Meet Score",                           "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "FAILURE"                        , "type" : "Message"  , "message" : "Failure",                                   "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "FAILED_BASIC_AUTH_NO_USER_FOUND", "type" : "Message"  , "message" : "Invalid API Credentials",                   "httpResponseCode" : "401", "status" : "Complete"},
+      {"responseCode" : "FAILED_INTERNAL_VALIDATION"     , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "Error Code[FIV-422]"},
+
+      {"responseCode" : "FAILED_EXTERNAL_VALIDATION"     , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "Error Code[FEV-422]"},
+
+      {"responseCode" : "INTERNAL_ERR"                   , "type" : "Message"  , "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Complete"},
+      {"responseCode" : "INTERNAL_ERR_XMLPARSE"          , "type" : "Message"  , "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "Error Code[RERXP-500]"},
+      {"responseCode" : "REMOTE_ERR"                     , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "Error Code[RER-500]"},
+      {"responseCode" : "REMOTE_ERR_LEXISNEXIS"          , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "Error Code[RERLN-500]"},
+      {"responseCode" : "SUCCESS_APPLICANT_EXIST"        , "type" : "Message"  , "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_PING"                   , "type" : "Message"  , "message" : "Sucessful Ping",                            "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_RETURN_QUESTION"        , "type" : "Questions", "message" : null,                                        "httpResponseCode" : "200", "status" : "Continue"},
+      {"responseCode" : "DUMMY_CONTINUE"                 , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Continue"}
     ]
   }
 }

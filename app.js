@@ -8,7 +8,7 @@ var stormpath = require('express-stormpath');
 var routes = require('./routes/index');
 //var users = require('./routes/users');
 var apiV1 = require('./routes/v1');
-//var apiV1Mock = require('./routes/v1_mock');
+var apiV1Mock = require('./routes/v1_mock');
 //var testHarnes = require('./routes/testHarness');
 
 
@@ -32,7 +32,7 @@ app.use(morgan('combined'));
 app.use('/', routes);
 //app.use('/users', users);
 app.use('/v1', apiV1);
-//app.use('/mock/v1', apiV1Mock);
+app.use('/mock/v1', apiV1Mock);
 //app.use('/testHarness', testHarnes);
 
 
