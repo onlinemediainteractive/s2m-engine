@@ -5,9 +5,9 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('s2m-eng:server');
+var logger = require('../lib/helpers/log-helper');
 var http = require('http');
-var db = require('..//lib/data_store/mysql');
+var db = require('../lib/helpers/mysql');
 var argv = require('minimist')(process.argv.slice(2));
 
 /**
@@ -28,18 +28,17 @@ var server = {}; //http.createServer(app);
  */
 
 app.on('stormpath.ready', function () {
-  console.log("Stormpath Start Up Complete");
+  logger.info("Stormpath Start Up Complete");
   server =  http.createServer(app);
   db.ping().then(function(rows) {
-    console.log('Data Store Start Up Complete')
+    logger.info('Data Store Start Up Complete')
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
   }).catch(function(err) {
-    console.log("Data Store Start Up Failed :" + err);
-    console.log(" ");
-    console.log("Exiting Server Start Up Process");
-    process.exit(1);
+      logger.fatal("Data Store Start Up Failed :" + err);
+      logger.fatal("Exiting Server Start Up Process");
+      process.exit(1);
   })
   ;
 
@@ -82,11 +81,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      logger.fatal(bind + ' requires elevated privileges');
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      logger.fatal(bind + ' is already in use');
       process.exit(1);
       break;
     default:
@@ -103,6 +102,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-  console.log('Http Server Ready Listening on ' + bind );
+  logger.info('Http Server Ready Listening on ' + bind );
 }

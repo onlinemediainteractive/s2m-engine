@@ -2,7 +2,11 @@
 
   "Onfido" : {
     "config" :{
-      "apiKey"             : "test_-WIZRzaUe1pArajKnSxDoeVMfUJTjqhE"
+      "apiKey_"             : "test_-WIZRzaUe1pArajKnSxDoeVMfUJTjqhE"
+     ,"transport_"          : "http://"
+     ,"host_"               : "localhost:4000"
+     ,"path_"               : "/v2/applicants"
+     ,"check_"             : "/checks"
     }
   },
   "LexisNexis" : {

@@ -1,0 +1,9 @@
+{
+   "uid" : "s2meng",
+   "append": true,
+   "watch": false,
+   "script": "www",
+   "sourceDir": "/home/ubuntu/applications/s2m-eng-master/bin",
+   "workingDir": "/home/ubuntu/applications/s2m-eng-master",
+   "args":["--port","9000"]
+}

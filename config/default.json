@@ -1,7 +1,7 @@
 {
   "Onfido" : {
     "config" :{
-      "apiKey"             : " ",
+      "apiKey_"             : " ",
       "transport"          : "https://",
       "host"               : "api.onfido.com",
       "path"               : "/v2/applicants",
@@ -17,27 +17,31 @@
   },
   "responseStatusCodes" : {
     "config" : [
-      {"responseCode" : "SUCCESS"                        , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "SUCCESS_CREATE"                 , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Complete"},
-      {"responseCode" : "FAILURE_SSN_TRACE"              , "type" : "Message"  , "message" : "Unable to Verify Identity",                 "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "Error Code[SST-200]"},
-      {"responseCode" : "FAILURE_QUIZ"                   , "type" : "Message"  , "message" : "Error Failed to Pass Identity Quiz",        "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "Error Code[QUIZ-200]"},
-      {"responseCode" : "SUCCESS_QUIZ"                   , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "ERROR"                          , "type" : "Message"  , "message" : "Error",                                     "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "SUCCESS_SCORE"                  , "type" : "Score"    , "message" : "Safe2Meet Score",                           "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "FAILURE"                        , "type" : "Message"  , "message" : "Failure",                                   "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "FAILED_BASIC_AUTH_NO_USER_FOUND", "type" : "Message"  , "message" : "Invalid API Credentials",                   "httpResponseCode" : "401", "status" : "Complete"},
-      {"responseCode" : "FAILED_INTERNAL_VALIDATION"     , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "Error Code[FIV-422]"},
-
-      {"responseCode" : "FAILED_EXTERNAL_VALIDATION"     , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "Error Code[FEV-422]"},
-
-      {"responseCode" : "INTERNAL_ERR"                   , "type" : "Message"  , "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Complete"},
-      {"responseCode" : "INTERNAL_ERR_XMLPARSE"          , "type" : "Message"  , "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "Error Code[RERXP-500]"},
-      {"responseCode" : "REMOTE_ERR"                     , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "Error Code[RER-500]"},
-      {"responseCode" : "REMOTE_ERR_LEXISNEXIS"          , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "Error Code[RERLN-500]"},
-      {"responseCode" : "SUCCESS_APPLICANT_EXIST"        , "type" : "Message"  , "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "SUCCESS_PING"                   , "type" : "Message"  , "message" : "Sucessful Ping",                            "httpResponseCode" : "200", "status" : "Complete"},
-      {"responseCode" : "SUCCESS_RETURN_QUESTION"        , "type" : "Questions", "message" : null,                                        "httpResponseCode" : "200", "status" : "Continue"},
-      {"responseCode" : "DUMMY_CONTINUE"                 , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Continue"}
+      {"responseCode" : "SUCCESS"                         , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_CREATE"                  , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "201", "status" : "Complete"},
+      {"responseCode" : "FAILURE_SSN_TRACE"               , "type" : "Message"  , "message" : "Unable to Verify Identity",                 "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "SST-200"},
+      {"responseCode" : "FAILURE_NATIONAL_CRIMINAL_VERIFY", "type" : "Message"  , "message" : "Possible Match Found on National Criminal Database", "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "NCV-200"},
+      {"responseCode" : "FAILURE_SEX_OFFENDER"            , "type" : "Message"  , "message" : "Possible Match Found on Sex Offender Database", "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "SEF-200"},
+      {"responseCode" : "FAILURE_QUIZ"                    , "type" : "Message"  , "message" : "Error Failed to Pass Identity Quiz",        "httpResponseCode" : "200", "status" : "Complete", "internalCode" : "QUIZ-200"},
+      {"responseCode" : "SUCCESS_QUIZ"                    , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "ERROR"                           , "type" : "Message"  , "message" : "Error",                                     "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_SCORE"                   , "type" : "Score"    , "message" : "Safe2Meet Score",                           "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "FAILURE"                         , "type" : "Message"  , "message" : "Failure",                                   "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "FAILED_INVALID_REQUEST"          , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "INVREQ-422"},
+      {"responseCode" : "FAILED_BASIC_AUTH_NO_USER_FOUND" , "type" : "Message"  , "message" : "Invalid API Credentials",                   "httpResponseCode" : "401", "status" : "Complete", "internalCode" : "NOAPIUSER-401"},
+      {"responseCode" : "FAILED_INTERNAL_VALIDATION"      , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "FIV-422"},
+      {"responseCode" : "FAILED_EXTERNAL_VALIDATION"      , "type" : "Message"  , "message" : "Invalid Request",                           "httpResponseCode" : "422", "status" : "Complete", "internalCode" : "FEV-422"},
+      {"responseCode" : "INTERNAL_ERR"                    , "type" : "Message"  , "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Complete"},
+      {"responseCode" : "INTERNAL_ERR_XMLPARSE"           , "type" : "Message"  , "message" : "Internal Error, Unable to Process Request", "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "RERXP-500"},
+      {"responseCode" : "REMOTE_ERR"                      , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "RER-500"},
+      {"responseCode" : "REMOTE_ERR_LEXISNEXIS"           , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "RERLN-500"},
+      {"responseCode" : "SUCCESS_APPLICANT_EXIST"         , "type" : "Message"  , "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_PING"                    , "type" : "Message"  , "message" : "Sucessful Ping",                            "httpResponseCode" : "200", "status" : "Complete"},
+      {"responseCode" : "SUCCESS_RETURN_QUESTION"         , "type" : "Questions", "message" : null,                                        "httpResponseCode" : "200", "status" : "Continue"},
+      {"responseCode" : "DUMMY_CONTINUE"                  , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Continue"},
+      {"responseCode" : "404"                             , "type" : "Message"  , "message" : "Url Not Found",                             "httpResponseCode" : "404", "status" : "Complete"},
+      {"responseCode" : "UNKNOWN_500"                     , "type" : "Message"  , "message" : "Internal Error",                            "httpResponseCode" : "500", "status" : "Complete"},
+      {"responseCode" : "INTERNAL_ERR_NO_TRANSACTION"     , "type" : "Message"  , "message" : "Internal Error",                            "httpResponseCode" : "500", "status" : "Complete", "internalCode" : "NOTRANS-500"}
     ]
   }
 }
