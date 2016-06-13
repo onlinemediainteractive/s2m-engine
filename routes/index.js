@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var S2mResponse = require("../lib/common/S2mHttpResponse");
+var S2mResponse = require("../lib/common/s2mHttpResponse");
 
 
 router.get('/ping', function(req, res, next) {
