@@ -7,17 +7,29 @@ var bodyParser = require('body-parser');
 var stormpath = require('express-stormpath');
 var routes = require('./routes/index');
 var apiV1 = require('./routes/v1');
-
 var logRequest =  require('./lib/middleware/log-request');
 var continueProcess =  require('./lib/middleware/continue-process');
 var S2mResponse = require('./lib/common/s2mHttpResponse');
 var _ = require('lodash');
+var envCheck = require('./lib/helpers/env-parameter-helper');
+var logger = require('./lib/helpers/log-helper');
+
+
+var fatalError = envCheck.validateEnvParams();
+if(fatalError) {
+    logger.fatal(' ');
+    logger.fatal('***************************************');
+    logger.fatal('Environment Varables Not Set Correctly');
+    logger.fatal('Exiting Server Start Up Process');
+    logger.fatal('***************************************');
+    process.exit(1);
+};
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

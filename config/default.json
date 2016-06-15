@@ -15,6 +15,11 @@
       "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification"
     }
   },
+  "Security" : {
+    "config" : {
+      "dbEncryption" : true
+    }
+  },
   "responseStatusCodes" : {
     "config" : [
       {"responseCode" : "SUCCESS"                         , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : "200", "status" : "Complete"},

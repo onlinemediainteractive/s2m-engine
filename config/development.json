@@ -18,5 +18,10 @@
       "ruleSet"     :"public.testing.redherrings",
       "constructTestResponse" : "Yes"
     }
+  },
+  "Security" : {
+    "config" : {
+      "dbEncryption" : false
+    }
   }
 }

@@ -20,6 +20,7 @@ router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
     next();
 });
 
+
 //validate application has been set up in safe2meet db
 router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(req, res, next) {
     next();
@@ -30,6 +31,10 @@ router.all('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req,
     next();
 });
 
+
+router.post('/verify/identity', safe2meet.applicantState, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
 
 // if no successful ssn trace then create applicant
 router.post('/verify/identity', safe2meet.createApplicant, safe2meet.continueProcess, function(req, res, next) {
@@ -58,9 +63,17 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
 
 
 
-router.post('/verify/identity', safe2meet.getScoreMock, safe2meet.continueProcess, function(req, res, next) {
+//router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+//    next();
+//});
+
+
+router.post('/verify/identity', safe2meet.getApplicant, safe2meet.getScoreMock, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
+
+
+
 
 
 

@@ -5,5 +5,7 @@
    "script": "www",
    "sourceDir": "/home/ubuntu/applications/s2m-eng-master/bin",
    "workingDir": "/home/ubuntu/applications/s2m-eng-master",
+   "minUptime" : 60000,
+   "spinSleepTime" : 10000,
    "args":["--port","9000"]
 }
