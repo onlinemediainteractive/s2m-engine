@@ -10,7 +10,12 @@ var safe2meet = require('../lib/controllers/safe2meet');
 router.all('*', safe2meet.logRequest, function(req, res, next) {
 
     req.s2mResponse     = undefined;
-    req.s2M             = {};
+    req.performedSteps  = {};
+    req.performedSteps.ssn_trace             = "no";
+    req.performedSteps.sex_offender_check    = "no";
+    req.performedSteps.national_crime_check  = "no";
+    req.performedSteps.facebook_verification = "no";
+
     next();
 });
 
