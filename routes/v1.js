@@ -5,6 +5,7 @@ var _ = require('lodash');
 var basicAuth = require('basic-auth');
 var router = express.Router();
 var safe2meet = require('../lib/controllers/safe2meet');
+var S2mResponse = require("../lib/common/s2mHttpResponse");
 
 //log incomming request
 router.all('*', safe2meet.logRequest, function(req, res, next) {
@@ -32,7 +33,7 @@ router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(re
 });
 
 //validate there is an applcant ref Id 
-router.all('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
+router.post('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
@@ -73,7 +74,7 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
 //});
 
 
-router.post('/verify/identity', safe2meet.getApplicant, safe2meet.getScoreMock, safe2meet.continueProcess, function(req, res, next) {
+router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
@@ -86,14 +87,36 @@ router.post('/verify/identity', safe2meet.getApplicant, safe2meet.getScoreMock, 
 router.get('/verify/ping',  function(req, res, next) {
 
     var s2mResponse = new S2mResponse('SUCCESS_PING');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
 });
 
 
-router.get('/verify/getScore/:applicantId',  function(req, res, next) {
+//router.get('/verify/social/:socialApp',  function(req, res, next) {
+//
+//    var s2mResponse = new S2mResponse('SUCCESS_PING');
+//    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
+//});
 
-    var s2mResponse = new S2mResponse('SUCCESS_PING');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+
+router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, function(req, res, next) {
+
+    //var s2mResponse = new S2mResponse('SUCCESS_PING');
+    //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+    next();
+});
+
+router.get('/verify/getScore/:applicantRefId',  safe2meet.calcScore, function(req, res, next) {
+
+    //var s2mResponse = new S2mResponse('SUCCESS_PING');
+    //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+    next();
+});
+
+router.get('/verify/getScore/:applicantRefId',  safe2meet.continueProcess, function(req, res, next) {
+
+    //var s2mResponse = new S2mResponse('SUCCESS_PING');
+    //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+    next();
 });
 
 module.exports = router;

@@ -1,8 +1,0 @@
-{"first_name": "Danny",
-  "last_name": "Fennell",
-  "email": "danny.fennell.jr@comcast.net",
-  "dob": "1963-12-10",
-  "mobile": "14045673646",
-  "country": "USA",
-  "id_numbers"  : [{"type": "ssn","value": "435-55-3646"}],
-  "addresses": [{"street": "301 Billowbend Rd","state": "GA","town": "Peachtree City","postcode": "30269","country": "USA"}]}

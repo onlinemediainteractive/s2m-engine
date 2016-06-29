@@ -6,20 +6,10 @@
      ,"host"              : "localhost:4000"
      ,"path"              : "/v2/applicants"
      ,"checks"             : "/checks"
-    },
-    "mockInterface"        : "active"
+    }
   },
   "LexisNexis" : {
     "config" : {
-      "url"         : "https://netview.verid.com:443/carbon/ws",
-      "wsdlPath"    : "?WSDL",
-      "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
-      "mode"        : "testing",
-      "ruleSet"     :"public.testing.redherrings",
-      "constructTestResponse" : "Yes"
-    },
-    "mockInterface"        : "inactive",
-    "mock" : {
       "url"         : "https://netview.verid.com:443/carbon/ws",
       "wsdlPath"    : "?WSDL",
       "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
@@ -35,7 +25,7 @@
   },
   "VerifySteps" : {
     "ssnTrace" : {"status" : "active"},
-    "identityQuiz" : {"status" : "inactive"},
+    "identityQuiz" : {"status" : "active"},
     "sexOffender" : {"status" : "active"},
     "nationalCriminal" : {"status" : "active"},
     "facebook" : {"status" : "active"}

@@ -6,5 +6,15 @@
       "host"               : "api.onfido.com",
       "creatApplicantPath" : "/v2/applicants"
     }
+  },
+  "LexisNexis" : {
+    "config" : {
+      "url"         : "https://netview.verid.com:443/carbon/ws",
+      "wsdlPath"    : "?WSDL",
+      "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
+      "mode"        : "live",
+      "ruleSet"     :"public.testing.redherrings",
+      "constructTestResponse" : "Yes"
+    }
   }
 }
