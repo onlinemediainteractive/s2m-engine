@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -16,6 +16,7 @@ var envCheck = require('./lib/helpers/env-parameter-helper');
 var logger = require('./lib/helpers/log-helper');
 //var graph     = require('fbgraph')
 
+//console.log('before env param check');
 var fatalError = envCheck.validateEnvParams();
 if(fatalError) {
     logger.fatal(' ');
@@ -71,10 +72,18 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   req.error = err;
-  req.s2mResponse  = new S2mResponse('404');
+  var httpResponseOptions = {};
+  httpResponseOptions.message = 'Invalid Url';
+  httpResponseOptions.internalMessage = {"internal" : "yes",
+        "script" : scriptName,
+        "processStep" : "N/A",
+        "message" :  "Url Not Found"};
+  //httpResponseOptions.errorCode = "INVALID_URL";
+  req.s2mResponse  = new S2mResponse('404', httpResponseOptions);
   console.log(scriptName + ' 404 Exception Handling Continue ....');
   //logRequest(req, res, next);
-  next();
+  //next();
+  continueProcess(req,res,next);
 
 });
 
@@ -90,7 +99,13 @@ app.use(function(err, req, res, next) {
     if(!_.isNil(req.s2mResponse))
         continueProcess(req,res,next);
     else{
-        req.s2mResponse  = new S2mResponse('UNKNOWN_500', {message : err.message});
+        var httpResponseOptions = {};
+        httpResponseOptions.internalMessage = {"internal" : "yes",
+            "script" : scriptName,
+            "processStep" : "N/A",
+            "message" :  err.message};
+        httpResponseOptions.errorCode = "INTERNAL-SERVICE-ERROR";
+        req.s2mResponse  = new S2mResponse('SERVICE_ERROR', httpResponseOptions);
         continueProcess(req,res,next);
     };
 });

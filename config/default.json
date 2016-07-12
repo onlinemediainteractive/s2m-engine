@@ -33,6 +33,16 @@
   },
   "responseStatusCodes" : {
     "config" : [
+      {"responseCode" : "APPLICANT_VALIDATION_FAILURE", "type" : "Message",   "status" : "Complete", "httpResponseCode" : 442, "message" : "Invalid Request",                                                    "errorCode" : "INVALID-REQUEST"},
+      {"responseCode" : "SERVICE_ERROR",                "type" : "Message",   "status" : "Complete", "httpResponseCode" : 500, "message" : "Service Error",                                                      "errorCode" : "SERVICE-ERROR"},
+      {"responseCode" : "404",                          "type" : "Message",   "status" : "Complete", "httpResponseCode" : 404, "message" : "Url Not Found",                                                      "errorCode" : "INVALID-URL"},
+      {"responseCode" : "FAILURE_SSN_TRACE_FORCE",      "type" : "Message",   "status" : "Complete", "httpResponseCode" : 200, "message" : "SSN with a middle digits of 99 fail in development mode",            "errorCode" : "FAILED-SSN-TRACE"},
+      {"responseCode" : "FAILURE_SSN_TRACE",            "type" : "Message",   "status" : "Complete", "httpResponseCode" : 200, "message" : "Unable to Verify Identity",                                          "errorCode" : "FAILED-SSN-TRACE"},
+      {"responseCode" : "SUCCESS_RETURN_QUESTION",      "type" : "Questions", "status" : "Continue", "httpResponseCode" : 200, "message" : "Identity Questions"},
+      {"responseCode" : "FAILURE_IDENTITY_NOT_FOUND",   "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 200, "message" : "Unable to locate the individual based on the information provided",  "errorCode" : "IDENTITY-NOT-FOUND"},
+      {"responseCode" : "FAILURE_QUIZ",                 "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 200, "message" : "Failed to Pass Identity Quiz",                                       "errorCode" : "FAILED-QUIZ"},
+      {"responseCode" : "SUCCESS_SCORE",                "type" : "Score"    , "status" : "Complete", "httpResponseCode" : 200, "message" : "Safe2Meet Score"},
+
       {"responseCode" : "SUCCESS"                         , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 200, "status" : "Complete"},
       {"responseCode" : "SUCCESS_CREATE"                  , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 201, "status" : "Complete"},
       {"responseCode" : "FAILURE_SSN_TRACE"               , "type" : "Message"  , "message" : "Unable to Verify Identity",                 "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "FAILED-SSN-TRACE"},

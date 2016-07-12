@@ -2,11 +2,11 @@
    "uid" : "s2meng",
    "append": true,
    "watch": true,
-   "watchDirectory": "/home/ubuntu/applications/s2m-eng-master",
+   "watchDirectory": "/home/app/s2m-eng",
    "script": "www",
-   "sourceDir": "/home/ubuntu/applications/s2m-eng-master/bin",
-   "workingDir": "/home/ubuntu/applications/s2m-eng-master",
+   "sourceDir": "/home/app/s2m-eng/bin",
+   "workingDir": "/home/app/s2m-eng",
    "minUptime" : 60000,
    "spinSleepTime" : 10000,
-   "args":["--port","9000"]
+   "args":["--port","3000"]
 }

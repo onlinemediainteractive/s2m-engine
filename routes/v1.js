@@ -10,6 +10,7 @@ var S2mResponse = require("../lib/common/s2mHttpResponse");
 //log incomming request
 router.all('*', safe2meet.logRequest, function(req, res, next) {
 
+    
     req.s2mResponse     = undefined;
     req.performedSteps  = {};
     req.performedSteps.ssn_trace             = "no";
@@ -116,6 +117,14 @@ router.get('/verify/getScore/:applicantRefId',  safe2meet.continueProcess, funct
 
     //var s2mResponse = new S2mResponse('SUCCESS_PING');
     //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+    next();
+});
+
+router.get('/verify/500Error', function(req, res, next) {
+
+    console.log('500 Error 1');
+    var x = req.xxxx.y;
+    console.log('500 Error 2');
     next();
 });
 

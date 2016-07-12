@@ -14,9 +14,9 @@ var S2mResponse = require("../lib/common/s2mHttpResponse");
 //});
 
 
-router.get('/', stormpath.loginRequired,  function(req, res){
-    next();
-});
+//router.get('/', stormpath.loginRequired,  function(req, res){
+//    next();
+//});
 
 router.get('/fb/redirect', function(req, res, next) {
 
@@ -34,6 +34,14 @@ router.get('/verify/social/facebook', function(req, res, next) {
 
     var s2mResponse = new S2mResponse('SUCCESS_PING');
     res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
+});
+
+
+router.get('/500Error', function(req, res, next) {
+
+    console.log('500 Error 1');
+    var x = req.xxxx.y;
+    console.log('500 Error 2');
 });
 
 module.exports = router;

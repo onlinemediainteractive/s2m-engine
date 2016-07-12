@@ -106,6 +106,7 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   logger.info('Http Server Ready Listening on ' + bind );
+  console.log('Http Server Ready Listening on ' + bind )
 }
 
 

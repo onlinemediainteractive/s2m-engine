@@ -7,7 +7,7 @@
      ,"path"              : "/v2/applicants"
      ,"checks"             : "/checks"
     },
-    "mockInterface"        : "active"
+    "mockInterface"        : "inactive"
   },
   "LexisNexis" : {
     "config" : {
