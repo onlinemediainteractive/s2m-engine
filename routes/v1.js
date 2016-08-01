@@ -6,35 +6,39 @@ var basicAuth = require('basic-auth');
 var router = express.Router();
 var safe2meet = require('../lib/controllers/safe2meet');
 var S2mResponse = require("../lib/common/s2mHttpResponse");
+var logger = require('../lib/helpers/log-helper');
 
 //log incomming request
 router.all('*', safe2meet.logRequest, function(req, res, next) {
 
     
     req.s2mResponse     = undefined;
-    req.performedSteps  = {};
-    req.performedSteps.ssn_trace             = "no";
-    req.performedSteps.sex_offender_check    = "no";
-    req.performedSteps.national_crime_check  = "no";
-    req.performedSteps.facebook_verification = "no";
+    logger.debug(req.body);
+   // req.performedSteps  = {};
+   // req.performedSteps.ssn_trace             = "no";
+   // req.performedSteps.sex_offender_check    = "no";
+   // req.performedSteps.national_crime_check  = "no";
+   // req.performedSteps.facebook_verification = "no";
 
     next();
 });
 
 //check stormpath set up 
 router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
-
+    logger.debug(req.body);
     next();
 });
 
 
 //validate application has been set up in safe2meet db
 router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(req, res, next) {
+    logger.debug(req.body);
     next();
 });
 
 //validate there is an applcant ref Id 
 router.post('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
+    logger.debug(req.body);
     next();
 });
 
@@ -42,6 +46,14 @@ router.post('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req
 router.post('/verify/identity', safe2meet.applicantState, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
+
+router.post('/verify/identity', safe2meet.parseSocialMedia, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+//router.post('/verify/identity', safe2meet.facebookExtendToken, safe2meet.continueProcess, function(req, res, next) {
+//    next();
+//});
 
 // if no successful ssn trace then create applicant
 router.post('/verify/identity', safe2meet.createApplicant, safe2meet.continueProcess, function(req, res, next) {
@@ -70,9 +82,9 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
 
 
 
-//router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
-//    next();
-//});
+router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
 
 
 router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
@@ -83,7 +95,11 @@ router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, saf
 
 
 
+router.get('/verify/lite',  function(req, res, next) {
 
+    var s2mResponse = new S2mResponse('SUCCESS_PING');
+    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
+});
 
 router.get('/verify/ping',  function(req, res, next) {
 

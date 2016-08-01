@@ -1,12 +1,13 @@
 {
-   "uid" : "s2meng",
+   "uid" : "s2mengDev",
    "append": true,
    "watch": true,
-   "watchDirectory": "/home/app/s2m-eng",
+   "watchDirectory": "/home/ubuntu/dev/s2m-eng-master",
    "script": "www",
-   "sourceDir": "/home/app/s2m-eng/bin",
-   "workingDir": "/home/app/s2m-eng",
+   "sourceDir": "/home/ubuntu/dev/s2m-eng-master",
+   "workingDir": "/home/ubuntu/dev/s2m-eng-master",
    "minUptime" : 60000,
    "spinSleepTime" : 10000,
-   "args":["--port","3000"]
+   "LOGFILE" : "/home/ubuntu/.forever/s2meng_8080.log",
+   "args":["--port","8080"]
 }

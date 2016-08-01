@@ -1,5 +1,5 @@
 {
-   "uid" : "s2meng",
+   "uid" : "s2mengQA",
    "append": true,
    "watch": true,
    "watchDirectory": "/home/ubuntu/applications/s2m-eng-master",
@@ -8,5 +8,6 @@
    "workingDir": "/home/ubuntu/applications/s2m-eng-master",
    "minUptime" : 60000,
    "spinSleepTime" : 10000,
+   "LOGFILE" : "/home/ubuntu/.forever/s2meng_90000.log",
    "args":["--port","9000"]
 }

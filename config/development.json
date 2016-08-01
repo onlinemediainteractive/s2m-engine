@@ -35,7 +35,7 @@
   },
   "VerifySteps" : {
     "ssnTrace" : {"status" : "active"},
-    "identityQuiz" : {"status" : "inactive"},
+    "identityQuiz" : {"status" : "active"},
     "sexOffender" : {"status" : "active"},
     "nationalCriminal" : {"status" : "active"},
     "facebook" : {"status" : "active"}
