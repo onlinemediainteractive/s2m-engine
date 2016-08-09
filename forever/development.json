@@ -1,7 +1,7 @@
 {
    "uid" : "s2mengDev",
    "append": true,
-   "watch": true,
+   "watch": false,
    "watchDirectory": "/home/ubuntu/dev/s2m-eng",
    "script": "www",
    "sourceDir": "/home/ubuntu/dev/s2m-eng/bin",
