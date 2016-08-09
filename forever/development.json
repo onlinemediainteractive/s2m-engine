@@ -4,7 +4,7 @@
    "watch": true,
    "watchDirectory": "/home/ubuntu/dev/s2m-eng",
    "script": "www",
-   "sourceDir": "/home/ubuntu/dev/s2m-eng",
+   "sourceDir": "/home/ubuntu/dev/s2m-eng/bin",
    "workingDir": "/home/ubuntu/dev/s2m-eng",
    "minUptime" : 60000,
    "spinSleepTime" : 10000,
