@@ -51,12 +51,17 @@ router.post('/verify/identity', safe2meet.parseSocialMedia, safe2meet.continuePr
     next();
 });
 
+
 //router.post('/verify/identity', safe2meet.facebookExtendToken, safe2meet.continueProcess, function(req, res, next) {
 //    next();
 //});
 
 // if no successful ssn trace then create applicant
 router.post('/verify/identity', safe2meet.createApplicant, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.continueProcess, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
@@ -82,9 +87,9 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
 
 
 
-router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
-    next();
-});
+//router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+//    next();
+//});
 
 
 router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
