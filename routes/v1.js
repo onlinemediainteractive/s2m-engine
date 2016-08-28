@@ -10,16 +10,8 @@ var logger = require('../lib/helpers/log-helper');
 
 //log incomming request
 router.all('*', safe2meet.logRequest, function(req, res, next) {
-
-    
     req.s2mResponse     = undefined;
     logger.debug(req.body);
-   // req.performedSteps  = {};
-   // req.performedSteps.ssn_trace             = "no";
-   // req.performedSteps.sex_offender_check    = "no";
-   // req.performedSteps.national_crime_check  = "no";
-   // req.performedSteps.facebook_verification = "no";
-
     next();
 });
 
@@ -28,7 +20,6 @@ router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
     logger.debug(req.body);
     next();
 });
-
 
 //validate application has been set up in safe2meet db
 router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(req, res, next) {
@@ -42,7 +33,6 @@ router.post('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req
     next();
 });
 
-
 router.post('/verify/identity', safe2meet.applicantState, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
@@ -50,7 +40,6 @@ router.post('/verify/identity', safe2meet.applicantState, safe2meet.continueProc
 router.post('/verify/identity', safe2meet.parseSocialMedia, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
-
 
 //router.post('/verify/identity', safe2meet.facebookExtendToken, safe2meet.continueProcess, function(req, res, next) {
 //    next();
@@ -70,83 +59,34 @@ router.post('/verify/identity', safe2meet.ssnTrace, safe2meet.continueProcess, f
     next();
 });
 
-
 router.post('/verify/identity', safe2meet.verifyIdentity, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
-
 
 router.post('/verify/identity', safe2meet.sexOffenderVerification, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
-
 router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
-
-
 
 //router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
 //    next();
 //});
 
-
 router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
-
-
-
-
-router.get('/verify/lite',  function(req, res, next) {
-
-    var s2mResponse = new S2mResponse('SUCCESS_PING');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
-});
-
 router.get('/verify/ping',  function(req, res, next) {
-
     var s2mResponse = new S2mResponse('SUCCESS_PING');
     res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
 });
 
-
-//router.get('/verify/social/:socialApp',  function(req, res, next) {
-//
-//    var s2mResponse = new S2mResponse('SUCCESS_PING');
-//    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
-//});
-
-
-router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, function(req, res, next) {
-
-    //var s2mResponse = new S2mResponse('SUCCESS_PING');
-    //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
+router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
-router.get('/verify/getScore/:applicantRefId',  safe2meet.calcScore, function(req, res, next) {
-
-    //var s2mResponse = new S2mResponse('SUCCESS_PING');
-    //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
-    next();
-});
-
-router.get('/verify/getScore/:applicantRefId',  safe2meet.continueProcess, function(req, res, next) {
-
-    //var s2mResponse = new S2mResponse('SUCCESS_PING');
-    //res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getHttpResponse());
-    next();
-});
-
-router.get('/verify/500Error', function(req, res, next) {
-
-    console.log('500 Error 1');
-    var x = req.xxxx.y;
-    console.log('500 Error 2');
-    next();
-});
 
 module.exports = router;
