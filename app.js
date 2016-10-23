@@ -26,6 +26,16 @@ if(fatalError) {
     process.exit(1);
 };
 
+
+var logReq = function(req, res, next) {
+    logger.debug(" *** Incoming request begin *** ");
+    logger.debug(' Http Method : ' +  req.method);
+    logger.debug(' Http Url    : ' +  req.originalUrl);
+    logger.debug(' Http Body   : ' +  JSON.stringify(req.body || 'No Body Found !!!!'));
+    logger.debug(" *** Incoming request end *** ");
+    next(); // Passing the request to the next handler in the stack.
+}
+
 var app = express();
 
 // view engine setup
@@ -41,29 +51,10 @@ app.use(stormpath.init(app, {
     debug: 'verbose'
 }));
 
-/*app.use(fbgraph.auth( {
-    appId : process.env.FACEBOOK_APP_ID,
-    appSecret : process.env.FACEBOOK_APP_SECRET,
-    redirectUri : process.env.FACEBOOK_CALLBACK_URL,
-    apiVersion: process.env.FACEBOOK_API_VERSION
-}));*/
-
-//var conf = {
-//    client_id:      '1660046770949533'
-//    , client_secret:  'f46bf76f7709adb0e29f89d5fa501845'
-//    , scope:          'email'
-//    , redirect_uri:   'http://localhost:3000/z'
-//};
+app.use(logReq);
 
 app.use('/', routes);
 app.use('/v1', apiV1);
-
-//app.use(socalstormpath.init(app, {
-//    debug: 'verbose',
-//    application: {
-//        href: 'https://api.stormpath.com/v1/directories/4WtIfZQPKFXxN5icV51H0B'
-//    }
-//}));
 
 
 app.use(morgan('combined'));
