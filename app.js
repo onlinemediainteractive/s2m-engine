@@ -75,6 +75,9 @@ app.use(morgan('combined'));
 app.use(function(req, res, next) {
   var scriptName = __filename.split(/[\\/]/).pop();
   console.log(scriptName + ' Starting 404 Exception Handling ....');
+  console.log('method : ' +  req.method);
+  console.log('url : ' +  req.originalUrl);
+  console.log('body: ' +  JSON.stringify(req.body));
   var err = new Error('Not Found');
   err.status = 404;
   req.error = err;
