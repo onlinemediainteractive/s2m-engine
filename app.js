@@ -14,7 +14,6 @@ var S2mResponse = require('./lib/common/s2mHttpResponse');
 var _ = require('lodash');
 var envCheck = require('./lib/helpers/env-parameter-helper');
 var logger = require('./lib/helpers/log-helper');
-//var graph     = require('fbgraph')
 
 //console.log('before env param check');
 var fatalError = envCheck.validateEnvParams();
@@ -31,7 +30,7 @@ var app = express();
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +40,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(stormpath.init(app, {
     debug: 'verbose'
 }));
+
+/*app.use(fbgraph.auth( {
+    appId : process.env.FACEBOOK_APP_ID,
+    appSecret : process.env.FACEBOOK_APP_SECRET,
+    redirectUri : process.env.FACEBOOK_CALLBACK_URL,
+    apiVersion: process.env.FACEBOOK_API_VERSION
+}));*/
 
 //var conf = {
 //    client_id:      '1660046770949533'

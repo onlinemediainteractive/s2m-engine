@@ -41,16 +41,21 @@ router.post('/verify/identity', safe2meet.parseSocialMedia, safe2meet.continuePr
     next();
 });
 
-//router.post('/verify/identity', safe2meet.facebookExtendToken, safe2meet.continueProcess, function(req, res, next) {
-//    next();
-//});
 
 // if no successful ssn trace then create applicant
 router.post('/verify/identity', safe2meet.createApplicant, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
-router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.continueProcess, safe2meet.continueProcess, function(req, res, next) {
+router.post('/verify/identity', safe2meet.facebookExtendToken, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/identity', safe2meet.twitterExtendToken, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/identity', safe2meet.linkedinExtendToken, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
