@@ -68,6 +68,9 @@
       {"responseCode" : "FAILURE_QUIZ",                 "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 200, "message" : "Failed to Pass Identity Quiz",                                       "errorCode" : "FAILED-QUIZ"},
       {"responseCode" : "SUCCESS_SCORE",                "type" : "Score"    , "status" : "Complete", "httpResponseCode" : 200, "message" : "Safe2Meet Score"},
       {"responseCode" : "FAILURE_SOCIAL_MEDIA",         "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Invalid Request",                                                     "errorCode" : "FAILED-SOCIAL-MEDIA"},
+      {"responseCode" : "SCORE_CALC_NOT_ALLOWED",       "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Not All validations complete, Score Calculaton not allowed",          "errorCode" : "SCORE-UNAVAILABLE"},
+      {"responseCode" : "SCORE_CALC_ERROR",             "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Failure during Score Calculation",                                    "errorCode" : "SCORE-CALC-ERROR"},
+
 
       {"responseCode" : "SUCCESS"                         , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 200, "status" : "Complete"},
       {"responseCode" : "SUCCESS_CREATE"                  , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 201, "status" : "Complete"},

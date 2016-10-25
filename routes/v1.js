@@ -94,10 +94,20 @@ router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2mee
 });
 
 
-router.post('/verify/update',  safe2meet.updateApplicant , safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+router.post('/verify/update',  safe2meet.updateApplicant , function(req, res, next) {
+   // var socialMediaData = []
+    account = {};
+    account.attributes = {};
+    account.attributes.accessToken = 'extendCheck';
+    account.attributes.userId = 'me';
+    req.socialMediaData = [];
+    req.socialMediaData.push({"source" : 'facebook', "attributes" : account});
     next();
 });
-
+router.post('/verify/update', safe2meet.facebookExtendToken, safe2meet.continueProcess,
+    safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+        next();
+ });
 
 router.post('/verify/ping',  function(req, res, next) {
     var s2mResponse = new S2mResponse('SUCCESS_PING');
