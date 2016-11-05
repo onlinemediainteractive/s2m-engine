@@ -38,6 +38,7 @@ router.post('/verify/identity', safe2meet.applicantState, safe2meet.continueProc
 });
 
 router.post('/verify/identity', safe2meet.parseSocialMedia, safe2meet.continueProcess, function(req, res, next) {
+    req.identityUdate = false;
     next();
 });
 
@@ -92,12 +93,13 @@ router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2mee
 
 
 router.post('/verify/update',  safe2meet.updateApplicant , safe2meet.continueProcess, function(req, res, next) {
+
     next();
 
 });
 
 router.post('/verify/update', safe2meet.parseSocialMedia, safe2meet.continueProcess, function(req, res, next) {
-
+    req.identityUdate = true;
     var hasSocialMedia = req.socialMediaData || [];
     if (hasSocialMedia.length == 0 ) {
         account = {};
