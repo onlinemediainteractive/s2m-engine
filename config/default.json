@@ -96,6 +96,8 @@
       {"responseCode" : "REMOTE_ERR_LEXISNEXIS"           , "type" : "Message"  , "message" : "Remote Error, Unable to Process Request",   "httpResponseCode" : 500, "status" : "Complete", "errorCode" : "RERLN-500"},
       {"responseCode" : "SUCCESS_APPLICANT_EXIST"         , "type" : "Message"  , "message" : "Applicant SSN Verification Exist",          "httpResponseCode" : 200, "status" : "Complete"},
       {"responseCode" : "SUCCESS_PING"                    , "type" : "Message"  , "message" : "Sucessful Ping",                            "httpResponseCode" : 200, "status" : "Complete"},
+      {"responseCode" : "SUCCESS_PING_GET"                , "type" : "Message"  , "message" : "Sucessful Ping POST",                            "httpResponseCode" : 200, "status" : "Complete"},
+      {"responseCode" : "SUCCESS_PING_POST"               , "type" : "Message"  , "message" : "Sucessful Ping GET",                            "httpResponseCode" : 200, "status" : "Complete"},
       {"responseCode" : "SUCCESS_RETURN_QUESTION"         , "type" : "Questions", "message" : null,                                        "httpResponseCode" : 200, "status" : "Continue"},
       {"responseCode" : "DUMMY_CONTINUE"                  , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 200, "status" : "Continue"},
       {"responseCode" : "404"                             , "type" : "Message"  , "message" : "Url Not Found",                             "httpResponseCode" : 404, "status" : "Complete"},
