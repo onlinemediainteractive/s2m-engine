@@ -11,7 +11,8 @@ var logger = require('../lib/helpers/log-helper');
 //log incomming request
 router.all('*', safe2meet.logRequest, function(req, res, next) {
     req.s2mResponse     = undefined;
-    logger.debug(req.body);
+
+    //logger.debug(req.body);
     next();
 });
 
@@ -137,6 +138,14 @@ router.post('/verify/ping',  function(req, res, next) {
 router.get('/verify/ping',  function(req, res, next) {
     var s2mResponse = new S2mResponse('SUCCESS_PING_GET');
     res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
+});
+
+
+router.get('/verify/scoreTrace/:applicantRefId', safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, function(req, res, next) {
+//router.get('/verify/scoreTrace/:applicantId', function(req, res, next) {
+
+    var i = 1;
+    res.status(200).send(req.scoreTrace);
 });
 
 
