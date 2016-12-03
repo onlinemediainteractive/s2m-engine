@@ -1,13 +1,14 @@
 {
   "uid" : "s2mEngProd",
-  "append": true,
+  "minUptime" : 60000,
+  "spinSleepTime" : 10000,
+  "append": false,
   "watch": false,
   "watchDirectory": "../s2m-eng",
   "script": "www",
   "sourceDir": "../s2m-eng/bin",
   "workingDir": "../s2m-eng",
-  "minUptime" : 60000,
-  "spinSleepTime" : 10000,
+
   "LOGFILE" : "engine.log",
   "args":["--port","3000"]
 }
