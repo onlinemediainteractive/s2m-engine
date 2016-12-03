@@ -8,7 +8,6 @@
   "script": "www",
   "sourceDir": "../s2m-eng/bin",
   "workingDir": "../s2m-eng",
-
   "LOGFILE" : "engine.log",
   "args":["--port","3000"]
 }
