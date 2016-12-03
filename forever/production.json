@@ -1,6 +1,6 @@
 {
   "uid" : "s2mEngProd",
-  "append": false,
+  "append": true,
   "watch": false,
   "watchDirectory": "../s2m-eng",
   "script": "www",
