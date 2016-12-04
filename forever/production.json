@@ -2,10 +2,10 @@
   "uid" : "s2mEngProd",
   "append": true,
   "watch": false,
-  "watchDirectory": "../s2m-eng",
+  "watchDirectory": "../s2mEng",
   "script": "www",
-  "sourceDir": "../s2m-eng/bin",
-  "workingDir": "../s2m-eng",
-  "LOGFILE" : "/home/ubuntu/application/.forever/engine.log",
+  "sourceDir": "../s2mEng/bin",
+  "workingDir": "../s2mEng",
+  "LOGFILE" : "/home/ubuntu/application/.forever/s2mEngProd.log",
   "args":["--port","3000"]
 }
