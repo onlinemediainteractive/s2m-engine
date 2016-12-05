@@ -1,10 +1,11 @@
 {
+
   "Onfido" : {
-    "config" :{
-      "apiKey"             : " ",
-      "transport"          : "https://",
-      "host"               : "api.onfido.com",
-      "creatApplicantPath" : "/v2/applicants"
+    "mock" :{
+      "transport"          : "http://"
+    ,"host"              : "localhost:4000"
+    ,"path"              : "/v2/applicants"
+    ,"checks"             : "/checks"
     }
   },
   "LexisNexis" : {
@@ -12,9 +13,21 @@
       "url"         : "https://netview.verid.com:443/carbon/ws",
       "wsdlPath"    : "?WSDL",
       "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
-      "mode"        : "live",
+      "mode"        : "testing",
       "ruleSet"     :"public.testing.redherrings",
-      "constructTestResponse" : "Yes"
+      "constructTestResponse" : "No"
     }
+  },
+  "Security" : {
+    "config" : {
+      "dbEncryption" : false
+    }
+  },
+  "VerifySteps" : {
+    "ssnTrace" : {"status" : "active"},
+    "identityQuiz" : {"status" : "active"},
+    "sexOffender" : {"status" : "active"},
+    "nationalCriminal" : {"status" : "active"},
+    "facebook" : {"status" : "active"}
   }
 }
