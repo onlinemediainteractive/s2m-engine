@@ -35,6 +35,7 @@ router.post('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req
 });
 
 router.post('/verify/identity', safe2meet.applicantState, safe2meet.continueProcess, function(req, res, next) {
+    req.subscribeReq = 'no';
     next();
 });
 
@@ -78,14 +79,14 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
     next();
 });
 
-//router.post('/verify/identity', safe2meet.socialMediaVerification, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
-//    next();
-//});
 
-router.post('/verify/identity', safe2meet.getApplicant, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
+router.post('/verify/identity', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
 
 
 router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
@@ -95,6 +96,7 @@ router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2mee
 
 router.post('/verify/update',  safe2meet.updateApplicant , safe2meet.continueProcess, function(req, res, next) {
 
+    req.subscribeReq = 'yes';
     next();
 
 });
@@ -136,6 +138,7 @@ router.post('/verify/update',  safe2meet.updateApplicant , safe2meet.continuePro
 });
 
 router.post('/verify/refresh', safe2meet.parseSocialMedia, safe2meet.continueProcess, function(req, res, next) {
+    req.subscribeReq = 'no';
     req.identityUdate = true;
     var hasSocialMedia = req.socialMediaData || [];
     if (hasSocialMedia.length == 0 ) {
