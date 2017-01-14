@@ -24,17 +24,17 @@ router.get('/fb/redirect', function(req, res, next) {
 });
 
 
-router.get('/ping', function(req, res, next) {
-    var s2mResponse = new S2mResponse('SUCCESS_PING');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
-});
+//router.get('/ping', function(req, res, next) {
+//    var s2mResponse = new S2mResponse('SUCCESS_PING');
+//    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
+//});
 
-router.get('/verify/social/facebook', function(req, res, next) {
+//router.get('/verify/social/facebook', function(req, res, next) {
 
 
-    var s2mResponse = new S2mResponse('SUCCESS_PING');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
-});
+ //   var s2mResponse = new S2mResponse('SUCCESS_PING');
+ //   res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
+//});
 
 
 router.get('/500Error', function(req, res, next) {
