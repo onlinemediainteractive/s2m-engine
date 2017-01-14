@@ -8,6 +8,6 @@
    "workingDir": "/home/ubuntu/qa/s2m-eng",
    "minUptime" : 60000,
    "spinSleepTime" : 10000,
-   "LOGFILE" : "/home/ubuntu/.forever/s2meng_90000.log",
+   "LOGFILE" : "/home/ubuntu/.forever/s2mEngQA.log",
    "args":["--port","9000"]
 }

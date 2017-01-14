@@ -8,6 +8,6 @@
    "workingDir": "/home/ubuntu/dev/s2m-eng",
    "minUptime" : 60000,
    "spinSleepTime" : 10000,
-   "LOGFILE" : "/home/ubuntu/.forever/s2me",
+   "LOGFILE" : "/home/ubuntu/.forever/s2mEngDev",
    "args":["--port","8080"]
 }
