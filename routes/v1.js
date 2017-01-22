@@ -71,6 +71,13 @@ router.post('/verify/identity', safe2meet.verifyIdentity, safe2meet.continueProc
     next();
 });
 
+router.post('/verify/identity', safe2meet.linkedinExtendToken, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
 
 
 router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
