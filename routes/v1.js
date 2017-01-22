@@ -71,13 +71,6 @@ router.post('/verify/identity', safe2meet.verifyIdentity, safe2meet.continueProc
     next();
 });
 
-router.post('/verify/identity', safe2meet.sexOffenderVerification, safe2meet.continueProcess, function(req, res, next) {
-    next();
-});
-
-router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2meet.continueProcess, function(req, res, next) {
-    next();
-});
 
 
 router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
@@ -127,6 +120,14 @@ router.post('/verify/update', safe2meet.linkedinExtendToken, safe2meet.continueP
     next();
 });
 
+router.post('/verify/update', safe2meet.nationalCriminalVerification, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/update', safe2meet.sexOffenderVerification, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
 router.post('/verify/update', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
@@ -168,16 +169,6 @@ router.post('/verify/refresh', safe2meet.calcScore, safe2meet.continueProcess, f
     next();
 });
 
-
-router.post('/verify/ping',  function(req, res, next) {
-    var s2mResponse = new S2mResponse('SUCCESS_PING_POST');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
-});
-
-router.get('/verify/ping',  function(req, res, next) {
-    var s2mResponse = new S2mResponse('SUCCESS_PING_GET');
-    res.status(s2mResponse.getHttpStatusCode()).send(s2mResponse.getResponse());
-});
 
 
 router.get('/verify/scoreTrace/:applicantRefId', safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, function(req, res, next) {

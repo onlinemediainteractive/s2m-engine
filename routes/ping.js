@@ -8,13 +8,6 @@ var safe2meet = require('../lib/controllers/safe2meet');
 var S2mResponse = require("../lib/common/s2mHttpResponse");
 var logger = require('../lib/helpers/log-helper');
 
-//log incomming request
-//router.all('*', safe2meet.logRequest, function(req, res, next) {
-//    req.s2mResponse     = undefined;
-
-    //logger.debug(req.body);
-//    next();
-//});
 
 //check stormpath set up 
 router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
