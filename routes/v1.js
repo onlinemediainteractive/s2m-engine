@@ -87,12 +87,11 @@ router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProces
     next();
 });
 
-router.post('/verify/identity', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
-
-router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+router.post('/verify/identity', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
@@ -138,6 +137,12 @@ router.post('/verify/update', safe2meet.sexOffenderVerification, safe2meet.conti
     next();
 });
 
+
+router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+
 router.post('/verify/update', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
@@ -175,10 +180,14 @@ router.post('/verify/refresh', safe2meet.linkedinExtendToken, safe2meet.continue
     next();
 });
 
-router.post('/verify/refresh', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+
+router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
+router.post('/verify/refresh', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
 
 
 router.get('/verify/scoreTrace/:applicantRefId', safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, function(req, res, next) {
