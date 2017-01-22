@@ -2,10 +2,12 @@
   "uid" : "s2mEngProd",
   "append": true,
   "watch": false,
-  "watchDirectory": "../s2mEng",
+  "watchDirectory": "/home/ec2-user/application/v-0.0.1/s2m-eng",
   "script": "www",
-  "sourceDir": "../s2mEng/bin",
-  "workingDir": "../s2mEng",
-  "LOGFILE" : "/home/ubuntu/application/.forever/s2mEngProd.log",
-  "args":["--port","3000"]
+  "sourceDir": "/home/ec2-user/application/v-0.0.1/s2m-eng/bin",
+  "workingDir": "/home/ec2-user/application/v-0.0.1/s2m-eng",
+  "minUptime" : 60000,
+  "spinSleepTime" : 10000,
+  "LOGFILE" : "/home/ec2-user/.forever/s2mEngProd.log",
+  "args":["--port","9000"]
 }
