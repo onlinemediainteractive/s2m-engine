@@ -79,6 +79,9 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
     next();
 });
 
+router.post('/verify/identity', safe2meet.sexOffenderVerification, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
 
 router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
     next();
