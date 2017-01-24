@@ -87,9 +87,9 @@ router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProces
     next();
 });
 
-router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
-    next();
-});
+//router.get('/verify/getScore/:applicantRefId',  safe2meet.getApplicant, safe2meet.continueProcess, safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+ //   next();
+//});
 
 router.post('/verify/identity', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
