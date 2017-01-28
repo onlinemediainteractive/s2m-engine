@@ -15,7 +15,7 @@
       "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
       "mode"        : "testing",
       "ruleSet"     :"public.testing.redherrings",
-      "constructTestResponse" : "No"
+      "constructTestResponse" : "Yes"
     }
   },
   "Security" : {
