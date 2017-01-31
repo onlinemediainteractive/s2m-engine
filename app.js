@@ -9,6 +9,7 @@ var socalstormpath = require('express-stormpath');
 var routes = require('./routes/index');
 var apiV1 = require('./routes/v1');
 var apiPing = require('./routes/ping');
+var apiHealthCheck = require('./routes/health-check');
 var logRequest =  require('./lib/middleware/log-request');
 var continueProcess =  require('./lib/middleware/continue-process');
 var S2mResponse = require('./lib/common/s2mHttpResponse');
@@ -57,6 +58,7 @@ app.use(logReq);
 app.use('/', routes);
 app.use('/v1', apiV1);
 app.use('/ping', apiPing);
+app.use('/healthcheck', apiHealthCheck);
 
 
 app.use(morgan('combined'));
