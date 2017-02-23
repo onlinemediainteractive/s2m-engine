@@ -13,8 +13,8 @@
       "url"         : "https://netview.verid.com:443/carbon/ws",
       "wsdlPath"    : "?WSDL",
       "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
-      "mode"        : "testing",
-      "ruleSet"     :"public.testing.redherrings",
+      "mode"        : "live",
+      "ruleSet"     :"customers.safe2meet.online",
       "constructTestResponse" : "No"
     }
   },

@@ -12,7 +12,7 @@
     "config" : {
       "url" : "https://staging.verid.com:443/carbon/ws",
       "wsdlPath" : "?WSDL",
-      "accountName" : "LexisNexis:Safe2Meet:Safe2MeetVerification",
+      "accountName" : "LexisNexis:Safe2Meet:DevTesting",
       "mode"        : "",
       "ruleSet"     : "",
       "constructTestResponse" : "No"
