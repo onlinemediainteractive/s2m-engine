@@ -30,11 +30,16 @@ if(fatalError) {
 
 
 var logReq = function(req, res, next) {
-    logger.debug(" *** Incoming request begin *** ");
-    logger.debug(' Http Method : ' +  req.method);
-    logger.debug(' Http Url    : ' +  req.originalUrl);
-    logger.debug(' Http Body   : ' +  JSON.stringify(req.body || 'No Body Found !!!!'));
-    logger.debug(" *** Incoming request end *** ");
+    if(req.originalUrl !==  '/healthcheck') {
+        logger.debug(" *** Incoming request begin *** ");
+        logger.debug(' Http Method : ' +  req.method);
+        logger.debug(' Http Url    : ' +  req.originalUrl);
+        logger.debug(' Http Body   : ' +  JSON.stringify(req.body || 'No Body Found !!!!'));
+        logger.debug(" *** Incoming request end *** ");
+    }
+    //else {
+    //    logger.debug('healthcheck');
+    //}
     next(); // Passing the request to the next handler in the stack.
 }
 
