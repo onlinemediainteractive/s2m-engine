@@ -34,7 +34,22 @@ var logReq = function(req, res, next) {
         logger.debug(" *** Incoming request begin *** ");
         logger.debug(' Http Method : ' +  req.method);
         logger.debug(' Http Url    : ' +  req.originalUrl);
-        logger.debug(' Http Body   : ' +  JSON.stringify(req.body || 'No Body Found !!!!'));
+
+        if(_.isNil(req.body)) {
+            logger.debug(' Http Body  : Request is Empty !!!!');
+            req.ssn = null;
+        }
+        else {
+            if(!_.isNil(req.body.ssn)) {
+                req.ssn = req.body.ssn;
+                //var bodyStr = JSON.stringify(req.body);
+                //var body = JSON.parse(bodyStr);
+                req.body.ssn = "***-**-****";
+
+            }
+            logger.debug(' Http Body   : ' +  JSON.stringify(req.body));
+        }
+        //logger.debug(' Http Body   : ' +  JSON.stringify(req.body || 'No Body Found !!!!'));
         logger.debug(" *** Incoming request end *** ");
     }
     //else {

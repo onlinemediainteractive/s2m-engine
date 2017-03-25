@@ -30,7 +30,7 @@
   },
   "Security" : {
     "config" : {
-      "dbEncryption" : false
+      "dbEncryption" : true
     }
   },
   "VerifySteps" : {
