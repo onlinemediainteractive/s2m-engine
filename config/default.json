@@ -70,8 +70,9 @@
       {"responseCode" : "FAILURE_SOCIAL_MEDIA_FACEBOOK","type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Invalid Request",                                                     "errorCode" : "FAILED-SOCIAL-MEDIA"},
       {"responseCode" : "FAILURE_SOCIAL_MEDIA_TWITTER", "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Invalid Request",                                                     "errorCode" : "FAILED-SOCIAL-MEDIA"},
       {"responseCode" : "FAILURE_SOCIAL_MEDIA_LINKEDIN","type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Invalid Request",                                                     "errorCode" : "FAILED-SOCIAL-MEDIA"},
-      {"responseCode" : "SCORE_CALC_NOT_ALLOWED",       "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Not All validations complete, Score Calculation not allowed",          "errorCode" : "SCORE-UNAVAILABLE"},
+      {"responseCode" : "SCORE_CALC_NOT_ALLOWED",       "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Not All validations complete, Score Calculation not allowed",         "errorCode" : "SCORE-UNAVAILABLE"},
       {"responseCode" : "SCORE_CALC_ERROR",             "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Failure during Score Calculation",                                    "errorCode" : "SCORE-CALC-ERROR"},
+      {"responseCode" : "ID_VERIFICATION_NOT_COMPLETE", "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 428, "message" : "Request Denied - Identity Verification not complete",                  "errorCode" : "ID-VERIFICATION-NOT-COMPLETED"},
 
 
       {"responseCode" : "SUCCESS"                         , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 200, "status" : "Complete"},

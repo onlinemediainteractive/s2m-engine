@@ -96,6 +96,8 @@ router.post('/verify/identity', safe2meet.calcScore, safe2meet.continueProcess, 
 });
 
 
+
+
 router.post('/verify/update',  safe2meet.updateApplicant , safe2meet.continueProcess, function(req, res, next) {
 
     req.subscribeReq = 'yes';
@@ -128,6 +130,14 @@ router.post('/verify/update', safe2meet.twitterExtendToken, safe2meet.continuePr
 router.post('/verify/update', safe2meet.linkedinExtendToken, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
+
+
+router.post('/verify/update',  safe2meet.identityVerificationComplete , safe2meet.continueProcess, function(req, res, next) {
+
+    next();
+
+});
+
 
 router.post('/verify/update', safe2meet.nationalCriminalVerification, safe2meet.continueProcess, function(req, res, next) {
     next();
