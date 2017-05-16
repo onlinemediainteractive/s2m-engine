@@ -73,14 +73,15 @@
       {"responseCode" : "SCORE_CALC_NOT_ALLOWED",       "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Not All validations complete, Score Calculation not allowed",         "errorCode" : "SCORE-UNAVAILABLE"},
       {"responseCode" : "SCORE_CALC_ERROR",             "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 442, "message" : "Failure during Score Calculation",                                    "errorCode" : "SCORE-CALC-ERROR"},
       {"responseCode" : "ID_VERIFICATION_NOT_COMPLETE", "type" : "Message"  , "status" : "Complete", "httpResponseCode" : 428, "message" : "Request Denied - Identity Verification not complete",                  "errorCode" : "ID-VERIFICATION-NOT-COMPLETED"},
-
+      {"responseCode" : "FAILURE_NATIONAL_CRIMINAL",    "type" : "Message"  , "message" : "Possible Match Found on National Criminal Database", "httpResponseCode" : 442, "status" : "Complete", "errorCode" : "FAILURE_NATIONAL_CRIMINAL"},
+      {"responseCode" : "FAILURE_SEX_OFFENDER",         "type" : "Message"  , "message" : "Possible Match Found on Sex Offender Database", "httpResponseCode" : 442, "status" : "Complete", "errorCode" : "FAILURE_SEX_OFFENDER"},
 
       {"responseCode" : "SUCCESS"                         , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 200, "status" : "Complete"},
       {"responseCode" : "SUCCESS_CREATE"                  , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 201, "status" : "Complete"},
       {"responseCode" : "FAILURE_SSN_TRACE"               , "type" : "Message"  , "message" : "Unable to Verify Identity",                 "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "FAILED-SSN-TRACE"},
       {"responseCode" : "FAILURE_SSN_TRACE_FORCE"         , "type" : "Message"  , "message" : "SSN with a middle digits of 99 fail in development mode",       "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "FAILED-SSN-TRACE"},
-      {"responseCode" : "FAILURE_NATIONAL_CRIMINAL_VERIFY", "type" : "Message"  , "message" : "Possible Match Found on National Criminal Database", "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "NCV-200"},
-      {"responseCode" : "FAILURE_SEX_OFFENDER"            , "type" : "Message"  , "message" : "Possible Match Found on Sex Offender Database", "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "SEF-200"},
+
+
       {"responseCode" : "FAILURE_IDENTITY-NOT-FOUND"      , "type" : "Message"  , "message" : "Unable to locate the individual based on the information provided",        "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "IDENTITY-NOT-FOUND"},
       {"responseCode" : "FAILURE_QUIZ"                    , "type" : "Message"  , "message" : "Error Failed to Pass Identity Quiz",        "httpResponseCode" : 200, "status" : "Complete", "errorCode" : "QUIZ-NOT-FOUND"},
       {"responseCode" : "SUCCESS_QUIZ"                    , "type" : "Message"  , "message" : "Success",                                   "httpResponseCode" : 200, "status" : "Complete"},
