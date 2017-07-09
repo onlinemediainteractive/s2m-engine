@@ -22,31 +22,36 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = {}; //http.createServer(app);
+//var server = {}; //http.createServer(app);
+var server =  http.createServer(app);
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 //TODO Verify environment variables are set
 
-app.on('stormpath.ready', function () {
-  logger.info("Stormpath Start Up Complete");
-  server =  http.createServer(app);
-  db.ping().then(function(rows) {
-    logger.info('Data Store Start Up Complete');
-    server.listen(port);
-    server.on('error', onError);
-    server.on('listening', onListening);
+//app.on('stormpath.ready', function () {
+  //logger.info("Stormpath Start Up Complete");
+  //server =  http.createServer(app);
+  //db.ping().then(function(rows) {
+  //  logger.info('Data Store Start Up Complete');
+  //  server.listen(port);
+  //  server.on('error', onError);
+  //  server.on('listening', onListening);
 
-  }).catch(function(err) {
-      logger.fatal("Data Store Start Up Failed :" + err);
-      logger.fatal("Exiting Server Start Up Process");
-      process.exit(1);
-  })
-  ;
+  //}).catch(function(err) {
+  //    logger.fatal("Data Store Start Up Failed :" + err);
+  //    logger.fatal("Exiting Server Start Up Process");
+  //    process.exit(1);
+  //})
+  //;
 
 
-});
+//});
 
 /**
  * Normalize a port into a number, string, or false.
@@ -107,6 +112,14 @@ function onListening() {
     : 'port ' + addr.port;
   logger.info('Http Server Ready Listening on ' + bind );
   console.log('Http Server Ready Listening on ' + bind )
+   db.ping().then(function(rows) {
+        logger.info('Data Store Start Up Complete');
+
+    }).catch(function(err) {
+        logger.fatal("Data Store Start Up Failed :" + err);
+        logger.fatal("Exiting Server Start Up Process");
+        process.exit(1);
+    })
 }
 
 

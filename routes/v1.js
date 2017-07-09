@@ -17,10 +17,10 @@ router.all('*', safe2meet.logRequest, function(req, res, next) {
 });
 
 //check stormpath set up 
-router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
-    logger.debug(req.body);
-    next();
-});
+//router.all('*', stormpath.apiAuthenticationRequired, function(req, res, next) {
+//    logger.debug(req.body);
+//    next();
+//});
 
 //validate application has been set up in safe2meet db
 router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(req, res, next) {

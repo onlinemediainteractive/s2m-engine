@@ -4,8 +4,8 @@ var path = require('path');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var stormpath = require('express-stormpath');
-var socalstormpath = require('express-stormpath');
+//var stormpath = require('express-stormpath');
+//var socalstormpath = require('express-stormpath');
 var routes = require('./routes/index');
 var apiV1 = require('./routes/v1');
 var apiPing = require('./routes/ping');
@@ -69,9 +69,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(stormpath.init(app, {
-    debug: 'verbose'
-}));
+//app.use(stormpath.init(app, {
+//    debug: 'verbose'
+//}));
 
 app.use(logReq);
 
