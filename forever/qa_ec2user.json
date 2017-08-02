@@ -1,0 +1,13 @@
+{
+  "uid" : "s2mEngQA",
+  "append": true,
+  "watch": false,
+  "watchDirectory": "/home/ec2-user/s2m-eng",
+  "script": "www",
+  "sourceDir": "/home/ec2-user/s2m-eng/bin",
+  "workingDir": "/home/ec2-user/s2m-eng",
+  "minUptime" : 60000,
+  "spinSleepTime" : 10000,
+  "LOGFILE" : "/home/ec2-user/.forever/s2mEngQA.log",
+  "args":["--port","9000"]
+}
