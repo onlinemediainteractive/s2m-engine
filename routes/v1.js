@@ -28,6 +28,8 @@ router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(re
     next();
 });
 
+
+
 //validate there is an applcant ref Id 
 router.post('*', safe2meet.getApplicant, safe2meet.continueProcess, function(req, res, next) {
     logger.debug(req.body);
@@ -197,6 +199,34 @@ router.post('/verify/identity', safe2meet.getApplicant, safe2meet.continueProces
 
 router.post('/verify/refresh', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
     next();
+});
+
+router.post('/extend/faceBookToken', safe2meet.parseSocialMedia, safe2meet.continueProcess, function(req, res, next) {
+    req.subscribeReq = 'no';
+    req.identityUdate = true;
+    var hasSocialMedia = req.socialMediaData || [];
+    if (hasSocialMedia.length == 0 ) {
+        account = {};
+        account.attributes = {};
+        account.attributes.accessToken = 'extendCheck';
+        account.attributes.userId = 'me';
+        req.socialMediaData = [];
+        req.socialMediaData.push({"source" : 'facebook', "attributes" : account});
+    }
+    next();
+});
+
+router.post('/extend/faceBookToken', safe2meet.facebookExtendToken, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/extend/faceBookToken', safe2meet.calcScore, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.get('/refresh/socialToken', safe2meet.refreshSocialToken, function(req, res, next) {
+    var i = 1;
+    res.status(200).send('Done');
 });
 
 
