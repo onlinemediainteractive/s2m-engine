@@ -4,7 +4,8 @@
       "transport"          : "https://",
       "host"               : "api.onfido.com",
       "path"               : "/v2/applicants",
-      "checks"             : "/checks"
+      "checks"             : "/checks",
+      "active"             : false
     },
     "mockInterface"        : "inactive"
   },
@@ -16,6 +17,16 @@
       "mode"        : "",
       "ruleSet"     : "",
       "constructTestResponse" : "No"
+    },
+    "criminalConfig" : {
+      "url" : "https://wsonline.seisint.com/WsAccurint/CriminalSearch?ver_=2.14&User.GLBPurpose=0&User.DLPurpose=0&SearchBy.SSN=",
+      "accountName" : "SAFEXML:228338Snn9",
+      "active"      : true
+    },
+    "sexOffenderConfig" : {
+      "url" :"https://wsonline.seisint.com/WsAccurint/SexualOffenderSearch?ver_=2.14&User.GLBPurpose=0&User.DLPurpose=0&SearchBy.SSN=",
+      "accountName" : "SAFEXML:228338Snn9",
+      "active"      : true
     },
     "mockInterface"        : "inactive"
   },

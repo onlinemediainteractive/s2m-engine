@@ -16,6 +16,16 @@
       "mode"        : "testing",
       "ruleSet"     :"public.testing.redherrings",
       "constructTestResponse" : "Yes"
+    },
+    "criminalConfig" : {
+      "url" : "https://wsonline.seisint.com/WsAccurint/CriminalSearch?ver_=2.14&User.GLBPurpose=0&User.DLPurpose=0&SearchBy.SSN=",
+      "accountName" : "SAFEXML:228338Snn9",
+      "active"      : true
+    },
+    "sexOffenderConfig" : {
+      "url" : "https://wsonline.seisint.com/WsAccurint/SexualOffenderSearch?ver_=2.14&User.GLBPurpose=0&User.DLPurpose=0&SearchBy.SSN=",
+      "accountName" : "SAFEXML:228338Snn9",
+      "active"      : true
     }
   },
   "Security" : {

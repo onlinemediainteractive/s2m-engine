@@ -11,7 +11,7 @@ var logger = require('../lib/helpers/log-helper');
 //log incomming request
 router.all('*', safe2meet.logRequest, function(req, res, next) {
     req.s2mResponse     = undefined;
-
+    //var auth = new Buffer("SAFEXML:228338Snn9").toString("base64");
     //logger.debug(req.body);
     next();
 });
@@ -24,7 +24,6 @@ router.all('*', safe2meet.logRequest, function(req, res, next) {
 
 //validate application has been set up in safe2meet db
 router.all('*', safe2meet.getApplication, safe2meet.continueProcess, function(req, res, next) {
-    logger.debug(req.body);
     next();
 });
 
@@ -82,6 +81,14 @@ router.post('/verify/identity', safe2meet.nationalCriminalVerification, safe2mee
 });
 
 router.post('/verify/identity', safe2meet.sexOffenderVerification, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/identity', safe2meet.nationalCriminalVerificationLN, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/identity', safe2meet.sexOffenderVerificationLN, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
@@ -146,6 +153,15 @@ router.post('/verify/update', safe2meet.nationalCriminalVerification, safe2meet.
 });
 
 router.post('/verify/update', safe2meet.sexOffenderVerification, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+
+router.post('/verify/update', safe2meet.nationalCriminalVerificationLN, safe2meet.continueProcess, function(req, res, next) {
+    next();
+});
+
+router.post('/verify/update', safe2meet.sexOffenderVerificationLN, safe2meet.continueProcess, function(req, res, next) {
     next();
 });
 
