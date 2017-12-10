@@ -42,11 +42,17 @@ var logReq = function(req, res, next) {
         }
         else {
             if(!_.isNil(req.body.ssn)) {
+                logger.debug(' body with ssn  : ' + JSON.stringify(req.body));
                 req.ssn = req.body.ssn;
+                logger.debug(' incoming ssn  : ' + req.body.ssn);
                 //var bodyStr = JSON.stringify(req.body);
                 //var body = JSON.parse(bodyStr);
                 req.body.ssn = "***-**-****";
 
+            }
+            else {
+                logger.debug(' no incoming ssn  : ' + req.body.ssn);
+                logger.debug(' body no ssn  : ' + JSON.stringify(req.body));
             }
             logger.debug(' Http Body   : ' +  JSON.stringify(req.body));
         }
